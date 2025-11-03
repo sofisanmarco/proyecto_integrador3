@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
+import { db, auth } from "../firebase/config";
 
 class NuevoPost extends Component{
     constructor(props){
@@ -7,12 +8,25 @@ class NuevoPost extends Component{
         this.state = {mensaje: ''}
     };
 
+    onSubmit(){
+            db.collection('posts').add({
+                    owner: auth.currentUser.email,
+                    mensaje: this.state.mensaje,
+                    createdAt: Date.now()
+    
+                })
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+            
+            this.props.navigation.navigate('Home')
+        }
+
     render(){
         return(
             <View style={styles.container}>
                 <Text style={styles.titulo}> Crear nuevo post </Text>
                 <TextInput keyboardType="dafault" 
-                            placeholder="mensaje" 
+                            placeholder="Escribi aca tu comentario" 
                             onChangeText={text => this.setState({mensaje: text})} 
                             value={this.state.mensaje} 
                             style={styles.input}/>
@@ -60,7 +74,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#28a745',
-        width: 70
+        width: 80
     },
     textoBoton: {
         color: '#fff'
