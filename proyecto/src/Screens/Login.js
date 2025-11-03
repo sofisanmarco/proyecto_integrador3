@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, Pressable, TextInput } from "react-native-web";
+import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
 import { auth, db } from '../firebase/config';
 
 class Login extends Component{
@@ -10,7 +10,8 @@ class Login extends Component{
 
     onSubmit(){
         auth.signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then((response) => {this.setState({loggedIn: true});})
+        .then((response) => {
+            this.setState({loggedIn: true}); this.props.navigation.navigate("HomeMenu", {screen: "Home"})})
         .catch(error => {this.setState({error: 'Credenciales inválidas.'})})
     }
 
@@ -99,10 +100,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#28a745',
-        width: 70
+        width: 120
     },
     textoBoton: {
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center'
     }
 })
 
