@@ -10,6 +10,16 @@ class Register extends Component{
 
     onSubmit(){
         console.log(this.state.email, this.state.password, this.state.usuario)
+
+        if(!this.state.email.includes("@")){
+            this.setState({error:"Email mal formateado"})
+            return
+        }
+        if(this.state.password < 6){
+            this.setState({error: "La password debe tener una longitud mínima de 6 caracteres"})
+            return
+        }
+
         auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(response => {this.setState({registered: true})
         this.props.navigation.navigate('Login')
@@ -25,7 +35,12 @@ class Register extends Component{
     
     })
 
-        .catch(error => {this.setState({error: "Fallo el registro"})})
+        .catch(error => {
+            console.log(error)
+            console.log(error.message);
+            
+            
+            this.setState({error: "Fallo el registro"})})
         }
 
     render(){
@@ -44,13 +59,14 @@ class Register extends Component{
                 <TextInput style={styles.input} keyboardType="default"
                             placeholder="usuario"
                             onChangeText={text => this.setState({usuario:text})} value={this.state.text}/>
-                
+                <Text> {this.state.error} </Text>
                 <Pressable style={styles.botonSubmit} onPress={() => this.onSubmit()}>
                     <Text style={styles.textoBoton}> Registrarse </Text>
                 </Pressable>
 
                 <Pressable style={styles.botonLogin} onPress={ ()=> this.props.navigation.navigate('Login')}>
                     <Text style={styles.textoBoton} >Ir a Login</Text>
+                    
                 </Pressable>
 
             </View>
