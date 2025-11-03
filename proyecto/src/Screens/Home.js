@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
+import { View, Text, StyleSheet, Pressable, TextInput, FlatList } from "react-native";
+import { db, auth } from "../firebase/config";
 
 class Home extends Component{
     constructor(props){
@@ -12,7 +13,7 @@ class Home extends Component{
             docs => {
                 let posteos = []
                 docs.forEach( doc => {
-                    users.push({
+                    posteos.push({
                         id: doc.id,
 			            data: doc.data()
                     })
