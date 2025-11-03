@@ -27,7 +27,7 @@ class Register extends Component{
         db.collection("users").add({
             owner: auth.currentUser.email,
             email: this.state.email,
-            usario: this.state.usuario,
+            usuario: this.state.usuario,
             createdAt: Date.now()
         })
         .then(res => console.log(res))
