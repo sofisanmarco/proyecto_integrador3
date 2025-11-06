@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, Pressable, TextInput, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { db, auth } from "../firebase/config";
 
 class Home extends Component{
@@ -9,7 +9,7 @@ class Home extends Component{
     };
 
     componentDidMount(){
-        db.collection('posts').onSnapshot(
+        db.collection('posts').orderBy("createdAt", "asc").onSnapshot(
             docs => {
                 let posteos = []
                 docs.forEach( doc => {
@@ -33,40 +33,52 @@ class Home extends Component{
                         style={styles.flatlist}
                         data = {this.state.posts}
                         keyExtractor={ item => item.id.toString() }
-                        renderItem={ ({item}) => <Text>{item.data.mensaje}</Text> }/>
+                        renderItem={ ({item}) => (
+                        <View style={styles.card}> 
+                            <Text style={styles.usuario}> {item.data.owner}</Text>
+                            <Text style={styles.texto}>{item.data.mensaje} </Text>
+                        </View> )}
+                        
+                />
             </View>
         )
     }
 };
 
 const styles = StyleSheet.create({
-    titulo: {
-        fontSize: 20,
-        fontWeight: 'bold'
-    }, 
-    
     container: {
         marginLeft: 10,
-        marginTop: 20,
-        paddingHorizontal: 10
+        marginTop: 75,
+        paddingHorizontal: 10,
+        flex: 1,
     },
-
+    card: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 16,
+        padding: 12,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: "#EAEAEA",
+        shadowColor: "#000",
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
+    },
     flatlist: {
     	width: '100%',
         flex: 1
    },
+   usuario: {
+    color: "#6B7280", 
+    fontSize: 13,
+    marginBottom: 6,
+   },
+   texto:{
+    fontSize: 16,
+    lineHeight: 22,
+    color: "#111827", 
+    marginBottom: 10,
+   }
 
-    boton: {
-        padding: 4,
-        backgroundColor: 'grey',
-        marginBottom: 4,
-        borderCurve: 4,
-        width: 150,
-        marginTop: 10
-    },
-    text: {
-        textAlign: "center"
-    }
 })
 
 export default Home;
