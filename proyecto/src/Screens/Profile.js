@@ -43,7 +43,7 @@ class Profile extends Component{
                 />
 
                 <Text>{auth.currentUser.email}</Text>
-
+                <Text style={styles.posteo}> Ultimos Posteos </Text>
                 <FlatList style={styles.flatlist}
                 data={ this.state.posteos }
                 keyExtractor={ item => item.id.toString() }
@@ -115,6 +115,11 @@ const styles = StyleSheet.create({
         lineHeight: 22,
         color: "#111827", 
         marginBottom: 10,
+    },
+    posteo:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20
     }
 });
 
