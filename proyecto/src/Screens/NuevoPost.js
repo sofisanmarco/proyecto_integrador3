@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     boton: {
-        backgroundColor:'#28a745',
+        backgroundColor:'#5ab3beff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderCurve: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#28a745',
+        borderColor: '#5ab3beff',
         width: 80
     },
     textoBoton: {

@@ -5,34 +5,56 @@ import {auth, db} from "../firebase/config";
 class Profile extends Component{
     constructor(props){
         super(props)
-        this.state = {usuarios: [], loading: true }
+        this.state = {usuario: [], loading: true, posteos: [] }
     }
 
      componentDidMount(){
-        db.collection("users").onSnapshot(
-            docs =>{
+           db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
+            docs => {
+                let posts = []
+                docs.forEach(doc => {
+                    posts.push({id: doc.id, data: doc.data()})
+                })
+                this.setState({
+                    posteos: posts
+                })
+            });
+
+            db.collection('users').where('owner', '==', auth.currentUser.email).onSnapshot(
+            docs => {
                 let users = []
                 docs.forEach(doc => {
                     users.push({id: doc.id, data: doc.data()})
                 })
                 this.setState({
-                    usuarios: users,
-                    loading: false 
+                    usuario: users
                 })
-           console.log(usuarios)})
-        
-    }
+            }); 
+    };
+
     render(){
         return(
-            <View>
-                <Text style={styles.texto}> Mi perfil </Text>
-                <FlatList
-                data={ this.state.usuarios }
+            <View style={styles.container}>
+
+                <FlatList 
+                data={ this.state.usuario }
                 keyExtractor={ item => item.id.toString() }
-                renderItem={ ({item}) => <Text>{item.data.usuario} {item.data.email} </Text> }
+                renderItem={({item}) => <Text>{item.data.usuario}</Text>}
                 />
+
+                <Text>{auth.currentUser.email}</Text>
+
+                <FlatList style={styles.flatlist}
+                data={ this.state.posteos }
+                keyExtractor={ item => item.id.toString() }
+                renderItem={ ({item}) => (<View style={styles.card}>
+                                            <Text style={styles.usuario}>{auth.currentUser.email}</Text>
+                                            <Text style={styles.texto}>{item.data.mensaje}</Text>
+                                        </View> )}
+                />
+
                 <Pressable style={styles.boton} onPress={ ()=> this.props.navigation.navigate('Login')}>
-                    <Text style={styles.profile}>Desloguearse. Hacer click aquí te lleva a Login.</Text>
+                    <Text style={styles.textoBoton}> Desloguearse </Text>
                 </Pressable>
             </View>
         )
@@ -40,25 +62,60 @@ class Profile extends Component{
 }
 
 const styles = StyleSheet.create({
-    texto: {
-        fontWeight: "bold",
+    titulo: {
         fontSize: 20,
-        marginBottom: 10,
-        marginLeft: 200,
-        marginTop: 20
+        fontWeight: 'bold'
+    },  
+    container: {
+        marginLeft: 10,
+        marginTop: 20,
+        paddingHorizontal: 10
     },
-    profile:{
-        fontWeight: "bold",
-        fontSize: 15,
+    text: {
         textAlign: "center"
     },
-    boton:{
-        backgroundColor: "pink",
-        width:500,
-        marginLeft: 20,
-        padding: 4,
-        marginTop: 5 
+    boton: {
+        backgroundColor:'#5ab3beff',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderCurve: 4,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#5ab3beff',
+        marginTop: 20,
+        width: 120
     },
-})
+    textoBoton: {
+        color: '#fff',
+        textAlign: 'center'
+    },
+    card: {
+        backgroundColor: "#FFFFFF",
+        borderRadius: 16,
+        padding: 12,
+        marginTop: 12,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: "#efefefff",
+        shadowColor: "#000000ff",
+        shadowOpacity: 0.06,
+    },
+    flatlist: {
+    	width: '100%',
+        flex: 1
+    },
+    usuario: {
+        color: "#6B7280", 
+        fontSize: 13,
+        marginBottom: 6,
+    },
+    texto:{
+        fontSize: 16,
+        lineHeight: 22,
+        color: "#111827", 
+        marginBottom: 10,
+    }
+});
 
 export default Profile 
