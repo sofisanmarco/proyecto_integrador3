@@ -26,7 +26,7 @@ class NuevoPost extends Component{
             <View style={styles.container}>
                 <Text style={styles.titulo}> Crear nuevo post </Text>
                 <TextInput keyboardType="dafault" 
-                            placeholder="Escribi aca tu comentario" 
+                            placeholder="Nuevo Post" 
                             onChangeText={text => this.setState({mensaje: text})} 
                             value={this.state.mensaje} 
                             style={styles.input}/>
