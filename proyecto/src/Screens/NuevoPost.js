@@ -12,8 +12,8 @@ class NuevoPost extends Component{
             db.collection('posts').add({
                     owner: auth.currentUser.email,
                     mensaje: this.state.mensaje,
-                    createdAt: Date.now()
-    
+                    createdAt: Date.now(),
+                    likes:[],
                 })
             .then(res => console.log(res))
             .catch(error => console.log(error))

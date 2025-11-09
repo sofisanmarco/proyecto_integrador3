@@ -24,7 +24,7 @@ class Login extends Component{
                             keyboardType="email-address" 
                             placeholder="Email" 
                             onChangeText={text => this.setState({email: text})} 
-                           value={this.state.email} />
+                            value={this.state.email} />
 
                 <TextInput keyboardType="default"
                                             placeholder="Contraseña"
