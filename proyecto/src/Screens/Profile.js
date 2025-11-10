@@ -42,22 +42,22 @@ class Profile extends Component{
             <View style={styles.container}>
 
                 <FlatList 
-                style= {styles.flatlistUsuario}
-                data={ this.state.usuario }
-                keyExtractor={ item => item.id.toString() }
-                renderItem={({item}) => <Text style={styles.titulo}>{item.data.usuario}</Text>}
-                />
+                    data={ this.state.usuario }
+                    keyExtractor={ item => item.id.toString() }
+                    renderItem={({item}) => <Text style={styles.titulo}>{item.data.usuario}</Text>}
+                    />
 
                 <Text>{auth.currentUser.email}</Text>
                 <Text style={styles.posteo}> Ultimos Posteos </Text>
+                
                 <FlatList style={styles.flatlist}
-                data={ this.state.posteos }
-                keyExtractor={ item => item.id.toString() }
-                renderItem={ ({item}) => (<View style={styles.card}>
-                                            <Text style={styles.usuario}>{auth.currentUser.email}</Text>
-                                            <Text style={styles.texto}>{item.data.mensaje}</Text>
-                                        </View> )}
-                />
+                    data={ this.state.posteos }
+                    keyExtractor={ item => item.id.toString() }
+                    renderItem={ ({item}) => (<View style={styles.card}>
+                                                <Text style={styles.usuario}>{auth.currentUser.email}</Text>
+                                                <Text style={styles.texto}>{item.data.mensaje}</Text>
+                                            </View> )}
+                    />
 
                 <Pressable style={styles.boton} onPress={ () => this.logout()}>
                     <Text style={styles.textoBoton}> Desloguearse </Text>
@@ -72,31 +72,36 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },  
+
     container: {
         marginLeft: 10,
         marginTop: 20,
         paddingHorizontal: 10,
-        flex: 1
     },
+
     text: {
         textAlign: "center"
     },
+
     boton: {
-        backgroundColor:'#5ab3beff',
-        paddingHorizontal: 12,
-        paddingVertical: 8,
+        backgroundColor:'#ed89b1ff',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
         textAlign: 'center',
-        borderRadius: 6,
+        borderCurve: 4,
         borderWidth: 1,
-        borderColor: '#5ab3beff',
-        marginTop: 360,
-        width: 120,
-        alignItems: 'center'
+        borderStyle: 'solid',
+        borderColor: '#e877a4ff',
+        width: 160,
+        marginTop: 370,
+        alignSelf: 'center'
     },
+
     textoBoton: {
         color: '#fff',
         textAlign: 'center'
     },
+
     card: {
         backgroundColor: "#FFFFFF",
         borderRadius: 16,
@@ -108,24 +113,24 @@ const styles = StyleSheet.create({
         shadowColor: "#000000ff",
         shadowOpacity: 0.06,
     },
+
     flatlist: {
     	width: '100%',
         marginTop: 5,
-        flexGrow: 0,
     },
-    flatlistUsuario:{
-        flexGrow: 0,
-    },
+
     usuario: {
         color: "#6B7280", 
         fontSize: 13,
         marginBottom: 4,
     },
+
     texto:{
         fontSize: 16,
         lineHeight: 22,
         color: "#111827", 
     },
+    
     posteo:{
         fontSize: 20,
         fontWeight: 'bold',

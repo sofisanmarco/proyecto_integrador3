@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
+import { View, Text, StyleSheet, Pressable, TextInput, Image } from "react-native";
 import { db, auth } from "../firebase/config";
 
 class NuevoPost extends Component{
@@ -24,9 +24,11 @@ class NuevoPost extends Component{
     render(){
         return(
             <View style={styles.container}>
+
                 <Text style={styles.titulo}> Crear nuevo post </Text>
+
                 <TextInput keyboardType="dafault" 
-                            placeholder="Nuevo Post" 
+                            placeholder="Escribe aqui tu comentario" 
                             onChangeText={text => this.setState({mensaje: text})} 
                             value={this.state.mensaje} 
                             style={styles.input}/>
@@ -53,31 +55,43 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        textAlign: "center"
+        textAlign: "center",
     },
     input: {
-        height: 20,
+        height: 50,
         paddingVertical: 15,
         paddingHorizontal: 10,
         borderWidth: 1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderCurve: 6,
-        marginVertical: 10
+        marginVertical: 10,
+        backgroundColor: "#ffffffff",
+        borderRadius: 16,
+        padding: 12,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: "#eaeaeaff",
+        shadowColor: "#030303ff",
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
     },
     boton: {
-        backgroundColor:'#5ab3beff',
+        backgroundColor:'#ed89b1ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderCurve: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#5ab3beff',
-        width: 80
+        borderColor: '#e877a4ff',
+        width: 120,
+        alignSelf: 'center',
+        marginTop: 10
     },
     textoBoton: {
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center'
     }
 })
 
