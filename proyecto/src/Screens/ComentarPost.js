@@ -9,6 +9,7 @@ constructor(props) {
     this.state = {
         comentario: "",
         comentarios: [],
+        post: null,
     };
 }
 
@@ -17,7 +18,9 @@ componentDidMount() {
     db.collection("posts")
         .doc(postId)
         .onSnapshot((doc) => {
+        const data = doc.data();
         this.setState({
+            post: data,
             comentarios: doc.data().comentarios || [],
         });
         });
@@ -41,6 +44,18 @@ agregarComentario() {
 render() {
     return (
     <View style={styles.container}>
+
+    {this.state.post && (
+    <View style={styles.post}>
+        <Text style={styles.postUsuario}>{this.state.post.owner}</Text>
+        <Text style={styles.postMensaje}>{this.state.post.mensaje}</Text>
+        <Text style={styles.postLikes}>
+        ❤️ {this.state.post.likes?.length || 0} likes
+        </Text>
+    </View>
+    )}
+
+
         <Text style={styles.titulo}>Comentarios</Text>
 
         <FlatList
@@ -97,13 +112,28 @@ textoBoton: {
     textAlign: "center" 
 },
 card: {
+    backgroundColor: "white",
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 15,
     borderWidth: 1,
-    borderColor: "#eee",
-    padding: 8,
-    marginBottom: 6,
-    borderRadius: 6,
+    borderColor: "#ddd",
+    alignSelf: "stretch",
 },
 usuario: { color: "#6B7280", fontSize: 13 },
+postUsuario: { fontWeight: "bold", color: "#333", marginBottom: 10 },
+postMensaje: { fontSize: 15, color: "#444", marginBottom: 8 },
+postLikes: { fontSize: 13, color: "#999" },
+post: {
+    backgroundColor: "white",
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    alignSelf: "stretch",
+},
+
 });
 
 export default ComentarPost;
