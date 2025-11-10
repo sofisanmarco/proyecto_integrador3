@@ -120,10 +120,24 @@ card: {
     borderColor: "#ddd",
     alignSelf: "stretch",
 },
-usuario: { color: "#6B7280", fontSize: 13 },
-postUsuario: { fontWeight: "bold", color: "#333", marginBottom: 10 },
-postMensaje: { fontSize: 15, color: "#444", marginBottom: 8 },
-postLikes: { fontSize: 13, color: "#999" },
+usuario: { 
+    color: "#6B7280", 
+    fontSize: 13 
+},
+postUsuario: { 
+    fontWeight: "bold", 
+    color: "#333", 
+    marginBottom: 10 
+},
+postMensaje: { 
+    fontSize: 15, 
+    color: "#444", 
+    marginBottom: 8 
+},
+postLikes: { 
+    fontSize: 13, 
+    color: "#999" 
+},
 post: {
     backgroundColor: "white",
     borderRadius: 8,
