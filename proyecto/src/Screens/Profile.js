@@ -32,6 +32,11 @@ class Profile extends Component{
             }); 
     };
 
+    logout(){
+        auth.signOut()
+        this.props.navigation.navigate('Login')
+    }
+
     render(){
         return(
             <View style={styles.container}>
@@ -54,7 +59,7 @@ class Profile extends Component{
                                         </View> )}
                 />
 
-                <Pressable style={styles.boton} onPress={ ()=> this.props.navigation.navigate('Login')}>
+                <Pressable style={styles.boton} onPress={ () => this.logout()}>
                     <Text style={styles.textoBoton}> Desloguearse </Text>
                 </Pressable>
             </View>
