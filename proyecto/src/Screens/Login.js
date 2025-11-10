@@ -8,6 +8,14 @@ class Login extends Component{
         this.state = {email: '', password: '', error: '', loggedIn: false}
     };
 
+    componentDidMount(){
+        auth.onAuthStateChanged( user => {
+            if (user){
+                this.props.navigation.navigate('HomeMenu', {screen: 'Home'})
+            }
+    })
+    }
+
     onSubmit(){
         auth.signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((response) => {
