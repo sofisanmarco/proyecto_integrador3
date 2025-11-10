@@ -72,6 +72,11 @@ class Home extends Component{
                 <Text style={styles.likeCount}>
                     {item.data.likes ? item.data.likes.length : 0} Me gusta
                 </Text>
+
+                <Pressable onPress={() => this.props.navigation.navigate('ComentarPost', { id: item.id })}>
+                    <Text style={styles.comentario}>💬 Comentar</Text>
+                </Pressable>
+
                 </View>
             )}
             />
@@ -122,6 +127,11 @@ const styles = StyleSheet.create({
         color: "#333",
         fontSize: 12,
         marginTop: 3 
+    },
+    comentario: {
+        color: "#007bff",
+        fontSize: 14,
+        marginTop: 5 
     },
 });
 
