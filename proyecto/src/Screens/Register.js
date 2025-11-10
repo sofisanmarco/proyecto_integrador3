@@ -87,11 +87,13 @@ const styles = StyleSheet.create({
     container: {
         marginLeft: 10,
         marginTop: 20,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        backgroundColor: "#ffffffff",
     },
 
     register: {
         padding: 4,
+        color: "black",
         backgroundColor: 'grey',
         marginBottom: 4,
         borderCurve: 4,
@@ -111,18 +113,26 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderCurve: 6,
-        marginVertical: 10
+        marginVertical: 10,
+        backgroundColor: "#ffffffff",
+        borderRadius: 16,
+        padding: 12,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: "#eaeaeaff",
+        shadowColor: "#030303ff",
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
     },
 
     boton: {
-        backgroundColor:'#28a745',
+        backgroundColor:'#e294f2ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderCurve: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#28a745',
         width: 120
     },
 
