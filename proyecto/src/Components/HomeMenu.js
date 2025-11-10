@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator()
 
 function HomeMenu(){
     return(
+       
         <Tab.Navigator screenOptions={ { tabBarShowLabel: false } }>
             <Tab.Screen name='Home' component={HomeStack} options={{headerShown: false, tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />}}/>
             <Tab.Screen name='Post' component={NuevoPost} options={{headerShown: false, tabBarIcon: () => <Entypo name="circle-with-plus" size={24} color="black" />}}/>
