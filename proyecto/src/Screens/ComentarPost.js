@@ -19,9 +19,10 @@ componentDidMount() {
         .doc(postId)
         .onSnapshot((doc) => {
         const data = doc.data();
+        const comentarios = data && data.comentarios ? data.comentarios : [];
         this.setState({
             post: data,
-            comentarios: doc.data().comentarios || [],
+            comentarios: comentarios,
         });
         });
     }
@@ -42,6 +43,11 @@ agregarComentario() {
 }
 
 render() {
+    const likesCount =
+        this.state.post && this.state.post.likes
+        ? this.state.post.likes.length
+        : 0;
+
     return (
     <View style={styles.container}>
 
@@ -50,7 +56,7 @@ render() {
         <Text style={styles.postUsuario}>{this.state.post.owner}</Text>
         <Text style={styles.postMensaje}>{this.state.post.mensaje}</Text>
         <Text style={styles.postLikes}>
-        ❤️ {this.state.post.likes?.length || 0} likes
+        ❤️ {likesCount} likes
         </Text>
     </View>
     )}

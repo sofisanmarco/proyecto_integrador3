@@ -34,7 +34,11 @@ class Home extends Component{
         postRef.get().then((doc) => {
             if (doc.exists) {
                 const data = doc.data();
-                const likes = data.likes || [];
+                let likes = data.likes;
+            
+            if (!likes) {
+                likes = [];
+            }
             
             if (likes.includes(userEmail)) {
                 postRef.update({
