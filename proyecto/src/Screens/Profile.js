@@ -37,6 +37,7 @@ class Profile extends Component{
             <View style={styles.container}>
 
                 <FlatList 
+                style= {styles.flatlistUsuario}
                 data={ this.state.usuario }
                 keyExtractor={ item => item.id.toString() }
                 renderItem={({item}) => <Text style={styles.titulo}>{item.data.usuario}</Text>}
@@ -107,11 +108,13 @@ const styles = StyleSheet.create({
         marginTop: 5,
         flexGrow: 0,
     },
+    flatlistUsuario:{
+        flexGrow: 0,
+    },
     usuario: {
         color: "#6B7280", 
         fontSize: 13,
         marginBottom: 4,
-        flexGrow: 0,
     },
     texto:{
         fontSize: 16,
