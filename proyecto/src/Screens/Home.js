@@ -51,7 +51,8 @@ class Home extends Component{
                 <View style={styles.card}>
                 <Text style={styles.usuario}>{item.data.owner}</Text>
                 <Text style={styles.texto}>{item.data.mensaje}</Text>
-    
+
+               
                 <Pressable onPress={() => this.darLike(item.id, item.data.likes)}>
                     <Text style={styles.like}>
                     {item.data.likes?.includes(auth.currentUser.email)
@@ -59,7 +60,7 @@ class Home extends Component{
                         : "❤️"}
                     </Text>
                 </Pressable>
-    
+                 <View style={styles.contenedor}> 
                 <Text style={styles.likeCount}>
                     {item.data.likes ? item.data.likes.length : 0} Likes
                 </Text>
@@ -68,6 +69,7 @@ class Home extends Component{
                     <Text style={styles.comentario}>Comentar 💬</Text>
                 </Pressable>
 
+                </View>
                 </View>
             )}
             />
@@ -105,9 +107,11 @@ const styles = StyleSheet.create({
     },
     texto:{
         fontSize: 16,
-        lineHeight: 22,
         color: "#111827", 
+        lineHeight: 22,
         marginBottom: 10,
+        fontWeight: '600',
+        maxWidth: '70%',
     },
     like: {
         color: "#007bff",
@@ -123,8 +127,14 @@ const styles = StyleSheet.create({
 
     comentario: {
         fontSize: 14,
-        marginTop: 5 
+        marginTop: 5,
     },
+    contenedor:{
+        marginTop: 6,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    }
     
 });
 
