@@ -68,15 +68,6 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
 
-    home: {
-        padding: 4,
-        backgroundColor: 'pink',
-        marginBottom: 4,
-        borderCurve: 4,
-        width: 150,
-        marginTop: 10
-    },
-
     text: {
         textAlign: "center"
     },

@@ -46,25 +46,29 @@ class Register extends Component{
     render(){
         return(
             <View style={styles.container} >
-                <Text> Formulario de Register</Text>
+
+                <Text style={styles.titulo}> Registrarse </Text>
+
                 <TextInput style={styles.input} keyboardType="email-address"
-                            placeholder="email" 
+                            placeholder="Email" 
                             onChangeText={text => this.setState({email:text})} value={this.state.email}/>
 
                 <TextInput style={styles.input} keyboardType="default"
-                            placeholder="password"
+                            placeholder="Contraseña"
                             secureTextEntry={true}
                             onChangeText={text => this.setState({password:text})} value={this.state.password}/>
 
                 <TextInput style={styles.input} keyboardType="default"
-                            placeholder="usuario"
+                            placeholder="Nombre de Usuario"
                             onChangeText={text => this.setState({usuario:text})} value={this.state.text}/>
+
                 <Text> {this.state.error} </Text>
-                <Pressable style={styles.botonSubmit} onPress={() => this.onSubmit()}>
+
+                <Pressable style={styles.boton} onPress={() => this.onSubmit()}>
                     <Text style={styles.textoBoton}> Registrarse </Text>
                 </Pressable>
 
-                <Pressable style={styles.botonLogin} onPress={ ()=> this.props.navigation.navigate('Login')}>
+                <Pressable style={styles.register} onPress={ ()=> this.props.navigation.navigate('Login')}>
                     <Text style={styles.textoBoton} >Ir a Login</Text>
                     
                 </Pressable>
@@ -75,40 +79,57 @@ class Register extends Component{
 }
 
 const styles = StyleSheet.create({
-    container:{
-        paddingHorizontal: 10,
-        margenSuperior: 20,
+    titulo: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    }, 
+    
+    container: {
+        marginLeft: 10,
+        marginTop: 20,
+        paddingHorizontal: 10
     },
-    input:{
-        Height: 20,
+
+    register: {
+        padding: 4,
+        backgroundColor: 'grey',
+        marginBottom: 4,
+        borderCurve: 4,
+        width: 150,
+        marginTop: 10
+    },
+
+    text: {
+        textAlign: "center"
+    },
+
+    input: {
+        height: 20,
         paddingVertical: 15,
         paddingHorizontal: 10,
         borderWidth: 1,
-        borderColor:"#ccc",
-        borderStyle: "solid",
+        borderColor: '#ccc',
+        borderStyle: 'solid',
         borderCurve: 6,
-        marginVertical: 10,
+        marginVertical: 10
     },
-    botonSubmit:{
-        backgroundColor: "#28a745",
+
+    boton: {
+        backgroundColor:'#28a745',
         paddingHorizontal: 10,
         paddingVertical: 6,
-        textAlign: "center",
-        borderCurve: 4, 
+        textAlign: 'center',
+        borderCurve: 4,
         borderWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#28a745"
+        borderStyle: 'solid',
+        borderColor: '#28a745',
+        width: 120
     },
-    textoBoton:{
-        color: "#fff"
-    },
-    botonLogin:{
-        backgroundColor: "red",
-        width:130,
-        marginLeft: 20,
-        padding: 4,
-        marginTop: 5 
-    },
+
+    textoBoton: {
+        color: '#fff',
+        textAlign: 'center'
+    }
 })
 
 
