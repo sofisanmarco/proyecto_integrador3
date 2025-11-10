@@ -8,8 +8,8 @@ class Profile extends Component{
         this.state = {usuario: [], loading: true, posteos: [] }
     }
 
-    componentDidMount(){
-        db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
+        componentDidMount(){
+            db.collection('posts').where('owner', '==', auth.currentUser.email).onSnapshot(
             docs => {
                 let posts = []
                 docs.forEach(doc => {
