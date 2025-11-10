@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
         color: "#6B7280", 
         fontSize: 13,
         marginBottom: 4,
+        flexGrow: 0,
     },
     texto:{
         fontSize: 16,
