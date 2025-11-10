@@ -109,10 +109,17 @@ input: {
     marginBottom: 10,
 },
 boton: {
-    backgroundColor: "#5ab3beff",
-    padding: 10,
-    width: 120,
-},
+        backgroundColor:'#ed89b1ff',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderCurve: 4,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#e877a4ff',
+        width: 120,
+        marginTop: 10
+    },
 textoBoton: { 
     color: "#fff", 
     textAlign: "center" 
