@@ -69,19 +69,19 @@ const styles = StyleSheet.create({
     container: {
         marginLeft: 10,
         marginTop: 20,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        flex: 1
     },
     text: {
         textAlign: "center"
     },
     boton: {
         backgroundColor:'#5ab3beff',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
         textAlign: 'center',
-        borderCurve: 4,
+        borderRadius: 6,
         borderWidth: 1,
-        borderStyle: 'solid',
         borderColor: '#5ab3beff',
         marginTop: 360,
         width: 120,
@@ -104,18 +104,18 @@ const styles = StyleSheet.create({
     },
     flatlist: {
     	width: '100%',
-        flex: 1
+        marginTop: 5,
+        flexGrow: 0,
     },
     usuario: {
         color: "#6B7280", 
         fontSize: 13,
-        marginBottom: 6,
+        marginBottom: 4,
     },
     texto:{
         fontSize: 16,
         lineHeight: 22,
         color: "#111827", 
-        marginBottom: 10,
     },
     posteo:{
         fontSize: 20,
