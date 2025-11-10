@@ -39,7 +39,7 @@ class Profile extends Component{
                 <FlatList 
                 data={ this.state.usuario }
                 keyExtractor={ item => item.id.toString() }
-                renderItem={({item}) => <Text>{item.data.usuario}</Text>}
+                renderItem={({item}) => <Text style={styles.titulo}>{item.data.usuario}</Text>}
                 />
 
                 <Text>{auth.currentUser.email}</Text>
@@ -83,8 +83,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#5ab3beff',
-        marginTop: 20,
-        width: 120
+        marginTop: 360,
+        width: 120,
+        alignItems: 'center'
     },
     textoBoton: {
         color: '#fff',
