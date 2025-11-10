@@ -27,30 +27,17 @@ class Home extends Component{
         })
     };
 
-    darLike(postId){
-        const userEmail = auth.currentUser.email;
-        const postRef = db.collection('posts').doc(postId);
-
-        postRef.get().then((doc) => {
-            if (doc.exists) {
-                const data = doc.data();
-                let likes = data.likes;
-            
-            if (!likes) {
-                likes = [];
-            }
-            
-            if (likes.includes(userEmail)) {
-                postRef.update({
-                likes: firebase.firestore.FieldValue.arrayRemove(userEmail),
-            });
-
-            } else {
-                postRef.update({
-                likes: firebase.firestore.FieldValue.arrayUnion(userEmail),
-                });
-            }
-    }});
+    darLike(id, likes){
+        db.collection('posts')
+        .doc(id)
+        .update(
+            likes.includes(auth.currentUser.email) ?
+            {likes : firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)}
+            :
+            {likes : firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)}    
+        )
+        .then( res => console.log(res))
+        .error( e => console.log(e))
     }
 
     render() {
@@ -65,7 +52,7 @@ class Home extends Component{
                 <Text style={styles.usuario}>{item.data.owner}</Text>
                 <Text style={styles.texto}>{item.data.mensaje}</Text>
     
-                <Pressable onPress={() => this.darLike(item.id)}>
+                <Pressable onPress={() => this.darLike(item.id, item.data.likes)}>
                     <Text style={styles.like}>
                     {item.data.likes?.includes(auth.currentUser.email)
                         ? "💔 Quitar Me gusta"

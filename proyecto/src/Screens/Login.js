@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         borderCurve: 4,
         width: 150,
-        marginTop: 10
+        marginTop: 10,
+        alignSelf: ''
     },
 
     text: {
@@ -91,15 +92,16 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     boton: {
-        backgroundColor:'#28a745',
+        backgroundColor:'#ed89b1ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderCurve: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#28a745',
-        width: 120
+        borderColor: '#e877a4ff',
+        width: 120,
+        alignSelf: 'center'
     },
     textoBoton: {
         color: '#fff',
