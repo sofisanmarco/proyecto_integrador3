@@ -55,17 +55,17 @@ class Home extends Component{
                 <Pressable onPress={() => this.darLike(item.id, item.data.likes)}>
                     <Text style={styles.like}>
                     {item.data.likes?.includes(auth.currentUser.email)
-                        ? "💔 Quitar Me gusta"
-                        : "❤️ Me gusta"}
+                        ? "💔"
+                        : "❤️"}
                     </Text>
                 </Pressable>
     
                 <Text style={styles.likeCount}>
-                    {item.data.likes ? item.data.likes.length : 0} Me gusta
+                    {item.data.likes ? item.data.likes.length : 0} Likes
                 </Text>
 
                 <Pressable onPress={() => this.props.navigation.navigate('ComentarPost', { id: item.id })}>
-                    <Text style={styles.comentario}>💬 Comentar</Text>
+                    <Text style={styles.comentario}>Comentar 💬</Text>
                 </Pressable>
 
                 </View>
@@ -99,31 +99,33 @@ const styles = StyleSheet.create({
         flex: 1
     },
     usuario: {
-    color: "#6B7280", 
-    fontSize: 13,
-    marginBottom: 6,
+        color: "#6B7280", 
+        fontSize: 13,
+        marginBottom: 6,
     },
     texto:{
-    fontSize: 16,
-    lineHeight: 22,
-    color: "#111827", 
-    marginBottom: 10,
+        fontSize: 16,
+        lineHeight: 22,
+        color: "#111827", 
+        marginBottom: 10,
     },
     like: {
         color: "#007bff",
         fontSize: 14,
         marginTop: 5 
     },
+
     likeCount: { 
         color: "#333",
         fontSize: 12,
         marginTop: 3 
     },
+
     comentario: {
-        color: "#007bff",
         fontSize: 14,
         marginTop: 5 
     },
+    
 });
 
 export default Home;

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
+import { View, Text, StyleSheet, Pressable, TextInput, Image } from "react-native";
 import { auth, db } from '../firebase/config';
 
 class Login extends Component{
@@ -26,6 +26,10 @@ class Login extends Component{
     render(){
         return(
             <View style={styles.container}>
+                <Image style={styles.image}
+                       source={require('../../assets/logo.png')}
+                       resizeMode='contain'/>
+
                 <Text style={styles.titulo}> Login </Text>
 
                 <TextInput style={styles.input} 
@@ -44,7 +48,7 @@ class Login extends Component{
                 <Text>{this.state.error}</Text>
 
                 <Pressable style={styles.boton} onPress={() => this.onSubmit()}>
-                                    <Text style={styles.textoBoton}>Iniciar Sesión</Text>
+                    <Text style={styles.textoBoton}>Iniciar Sesión</Text>
                 </Pressable>
 
                 <Pressable style={styles.register} onPress={() => this.props.navigation.navigate('Register')}>
@@ -60,12 +64,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     }, 
+
+    image: {
+        height: 40,
+        marginLeft: 40
+    },
     
     container: {
         marginLeft: 10,
         marginTop: 20,
         paddingHorizontal: 10,
-         backgroundColor: "#ffffffff"
     },
 
     register: {

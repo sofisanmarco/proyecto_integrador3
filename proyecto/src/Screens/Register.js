@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, StyleSheet, Text, Pressable, TextInput} from "react-native";
+import {View, StyleSheet, Text, Pressable, TextInput, Image} from "react-native";
 import {auth, db} from "../firebase/config";
 
 class Register extends Component{
@@ -9,8 +9,6 @@ class Register extends Component{
     }
 
     onSubmit(){
-        console.log(this.state.email, this.state.password, this.state.usuario)
-
         if(!this.state.email.includes("@")){
             this.setState({error:"Email mal formateado"})
             return
@@ -34,18 +32,17 @@ class Register extends Component{
         .catch( e => console.log(e))
     
     })
-
         .catch(error => {
-            console.log(error)
-            console.log(error.message);
-            
-            
             this.setState({error: "Fallo el registro"})})
         }
 
     render(){
         return(
             <View style={styles.container} >
+
+                <Image style={styles.image}
+                                       source={require('../../assets/logo.png')}
+                                       resizeMode='contain'/>
 
                 <Text style={styles.titulo}> Registrarse </Text>
 
@@ -69,7 +66,7 @@ class Register extends Component{
                 </Pressable>
 
                 <Pressable style={styles.register} onPress={ ()=> this.props.navigation.navigate('Login')}>
-                    <Text style={styles.textoBoton} >Ir a Login</Text>
+                    <Text style={styles.text} >Ir a Login</Text>
                     
                 </Pressable>
 
@@ -88,17 +85,21 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginTop: 20,
         paddingHorizontal: 10,
-        backgroundColor: "#ffffffff",
     },
+
+    image: {
+        height: 40,
+        marginLeft: 40
+    },
+    
 
     register: {
         padding: 4,
-        color: "black",
-        backgroundColor: 'grey',
         marginBottom: 4,
         borderCurve: 4,
         width: 150,
-        marginTop: 10
+        marginTop: 10,
+        alignSelf: 'center'
     },
 
     text: {
@@ -126,14 +127,16 @@ const styles = StyleSheet.create({
     },
 
     boton: {
-        backgroundColor:'#e294f2ff',
+        backgroundColor:'#ed89b1ff',
+        borderColor: '#e877a4ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderCurve: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        width: 120
+        width: 120,
+        alignSelf: 'center'
     },
 
     textoBoton: {
