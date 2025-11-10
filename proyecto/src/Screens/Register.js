@@ -47,7 +47,7 @@ class Register extends Component{
         return(
             <View style={styles.container} >
                 <Text> Formulario de Register</Text>
-                 <TextInput style={styles.input} keyboardType="email-address"
+                <TextInput style={styles.input} keyboardType="email-address"
                             placeholder="email" 
                             onChangeText={text => this.setState({email:text})} value={this.state.email}/>
 
